@@ -1,0 +1,23 @@
+.nav_netflix_avatar {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .nav_netflix_avatar {
+    top: 15px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav_netflix_avatar {
+    top: 14px;
+  }
+}

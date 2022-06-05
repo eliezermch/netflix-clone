@@ -1,0 +1,31 @@
+.nav-input__container {
+  width: 100px;
+  position: relative;
+  left: 12px;
+  bottom: 4px;
+  padding: 1px;
+  background-color: #141414;
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-input__container button {
+  border: 0;
+  background-color: #141414;
+}
+
+@media (min-width: 768px) {
+  .nav-input__container {
+    width: 200px;
+    left: 0;
+    bottom: 5px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-input__container {
+    bottom: 4px;
+  }
+}

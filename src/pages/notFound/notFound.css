@@ -1,0 +1,39 @@
+.not-found__container {
+  width: 100%;
+  height: 100%;
+}
+
+.not-found-title__container {
+  padding: 12px;
+}
+
+.not-found-title__container h1 {
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.not-found-description__container {
+  padding: 0 16px;
+}
+
+.not-found-description__container p {
+  color: #fff;
+}
+
+@media (min-width: 1024px) {
+  .not-found-title__container h1 {
+    font-size: 1.8rem;
+  }
+  .not-found-description__container p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .not-found-title__container h1 {
+    font-size: 2rem;
+  }
+  .not-found-description__container p {
+    font-size: 1.4rem;
+  }
+}

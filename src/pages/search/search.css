@@ -1,0 +1,9 @@
+.search-container {
+  margin-top: 8rem;
+}
+
+@media (min-width: 1024px) {
+  .search-container {
+    height: 62.5vh;
+  }
+}
