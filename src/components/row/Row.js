@@ -16,8 +16,10 @@ const Row = ({ title, style, items }) => {
             return (
               <FilmCard
                 key={film.id}
-                title={film.fullTitle || film.title}
-                image={{ url: film.image }}
+                title={film.name || film.title}
+                image={{
+                  url: `https://image.tmdb.org/t/p/w300${film.poster_path}`,
+                }}
               />
             );
           })

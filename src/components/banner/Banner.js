@@ -12,7 +12,7 @@ const Banner = ({ film }) => {
       style={{
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundImage: `url(${film?.image})`,
+        backgroundImage: `url(${`https://image.tmdb.org/t/p/original${film?.backdrop_path}`})`,
         backgroundPosition: "center",
       }}
     >
@@ -20,13 +20,13 @@ const Banner = ({ film }) => {
         <RequestExceeded />
       ) : (
         <div className="banner__content">
-          <h1 className="banner__title">{film?.title}</h1>
+          <h1 className="banner__title">{film?.name}</h1>
           <div className="banner__buttons">
             <button className="banner__button">Play</button>
             <button className="banner__button">My List</button>
           </div>
           <h1 className="banner__description">
-            {truncate("This is a test description", 170)}
+            {truncate(film?.overview, 170)}
           </h1>
         </div>
       )}

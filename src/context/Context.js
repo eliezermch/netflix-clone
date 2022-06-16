@@ -1,9 +1,11 @@
 import React from "react";
 
 const defaultGlobalState = {
+  trendingNetflixOriginals: [],
   trendingMovies: [],
-  trendingTvShows: [],
-  comingSoonFilms: [],
+  trendingActions: [],
+  trendingHorrors: [],
+  trendingRomance: [],
   searchFilms: { value: "", result: [] },
 };
 const globalStateContext = React.createContext(defaultGlobalState);

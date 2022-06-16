@@ -1,4 +1,6 @@
-const API_KEY = "k_v2g2yxzz";
+import axios from "axios";
+
+const API_KEY = "eaa274ab94f09f6970f1cccdc38f24ff";
 // "k_awj490vh"
 // "k_bdfppuax"
 // "k_lje94aw3"
@@ -10,44 +12,72 @@ const API_KEY = "k_v2g2yxzz";
 // "k_8mkwub1j"
 // "k_zdi41bi7"
 // "k_i1qgep2h"
-//
+// "k_v2g2yxzz"
+
+const api = axios.create({
+  baseURL: "https://api.themoviedb.org/3",
+  headers: {
+    "Content-Type": "application/json;charset=utf-8",
+  },
+  params: {
+    api_key: API_KEY,
+  },
+});
+
+function getTredingNetflixOriginal() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const { data } = await api(`/discover/tv?with_networks=213`);
+      const movies = data.results;
+      resolve(movies);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
 
 function getTredingMovies() {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch(
-        `https://imdb-api.com/en/API/MostPopularMovies/${API_KEY}`
-      );
-      const data = await response.json();
-      resolve(data.items);
+      const { data } = await api(`/trending/movie/day`);
+      const movies = data.results;
+      resolve(movies);
     } catch (error) {
       reject(error);
     }
   });
 }
 
-function getTredingTvShows() {
+function getTredingMoviesActions() {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch(
-        `https://imdb-api.com/en/API/MostPopularTVs/${API_KEY}`
-      );
-      const data = await response.json();
-      resolve(data.items);
+      const { data } = await api(`/discover/movie?with_genres=28`);
+      const movies = data.results;
+      resolve(movies);
     } catch (error) {
       reject(error);
     }
   });
 }
 
-function getComingSoonFilms() {
+function getTredingMoviesHorror() {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch(
-        `https://imdb-api.com/en/API/ComingSoon/${API_KEY}`
-      );
-      const data = await response.json();
-      resolve(data.items);
+      const { data } = await api(`/discover/movie?with_genres=27`);
+      const movies = data.results;
+      resolve(movies);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+function getTredingMoviesRomance() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const { data } = await api(`/discover/movie?with_genres=10749`);
+      const movies = data.results;
+      resolve(movies);
     } catch (error) {
       reject(error);
     }
@@ -69,9 +99,11 @@ function getSearchFilms(value) {
 }
 
 export {
-  getTredingTvShows,
+  getTredingNetflixOriginal,
+  getTredingMoviesActions,
   getTredingMovies,
-  getComingSoonFilms,
+  getTredingMoviesHorror,
+  getTredingMoviesRomance,
   // eslint-disable-next-line comma-dangle
   getSearchFilms,
 };

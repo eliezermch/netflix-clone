@@ -11,33 +11,43 @@ import { Footer } from "../../components/footer/Footer";
 
 // Services
 import {
-  getComingSoonFilms,
+  getTredingNetflixOriginal,
+  getTredingMoviesHorror,
   getTredingMovies,
+  getTredingMoviesRomance,
   // eslint-disable-next-line comma-dangle
-  getTredingTvShows,
+  getTredingMoviesActions,
 } from "../../services/imdb";
 
 const Home = () => {
   const [state, dispatch] = useGlobalState();
 
   const bannerFilm =
-    state.trendingTvShows[
-      Math.floor(Math.random() * state.trendingTvShows.length)
+    state.trendingNetflixOriginals[
+      Math.floor(Math.random() * state.trendingNetflixOriginals.length - 1)
     ] || undefined;
 
   useEffect(() => {
     (async () => {
+      if (!state.trendingNetflixOriginals.length) {
+        const data = await getTredingNetflixOriginal();
+        dispatch({ trendingNetflixOriginals: data });
+      }
       if (!state.trendingMovies.length) {
         const data = await getTredingMovies();
         dispatch({ trendingMovies: data });
       }
-      if (!state.trendingTvShows.length) {
-        const data = await getTredingTvShows();
-        dispatch({ trendingTvShows: data });
+      if (!state.trendingActions.length) {
+        const data = await getTredingMoviesActions();
+        dispatch({ trendingActions: data });
       }
-      if (!state.comingSoonFilms.length) {
-        const data = await getComingSoonFilms();
-        dispatch({ comingSoonFilms: data });
+      if (!state.trendingHorrors.length) {
+        const data = await getTredingMoviesHorror();
+        dispatch({ trendingHorrors: data });
+      }
+      if (!state.trendingRomance.length) {
+        const data = await getTredingMoviesRomance();
+        dispatch({ trendingRomance: data });
       }
     })();
   }, []);
@@ -50,15 +60,17 @@ const Home = () => {
 
       <Row
         style="slider"
-        items={state.trendingMovies}
-        title="Trending Movies"
+        items={state.trendingNetflixOriginals}
+        title="Trendings"
       />
       <Row
         style="slider"
-        items={state.trendingTvShows}
-        title="Trending Tv Shows"
+        items={state.trendingMovies}
+        title="Trending Movies"
       />
-      <Row style="slider" items={state.comingSoonFilms} title="Coming Soon" />
+      <Row style="slider" items={state.trendingActions} title="Action" />
+      <Row style="slider" items={state.trendingHorrors} title="Horror" />
+      <Row style="slider" items={state.trendingRomance} title="Romance" />
 
       <Footer />
     </>
