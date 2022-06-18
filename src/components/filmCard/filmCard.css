@@ -7,7 +7,8 @@
 
 .row__poster-container:focus,
 .row__poster-container:hover {
-  transform: scale(1.5);
+  cursor: pointer;
+  transform: scale(1.4);
   z-index: 1;
 }
 

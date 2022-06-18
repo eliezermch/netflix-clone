@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_KEY = "eaa274ab94f09f6970f1cccdc38f24ff";
+const API_KEY_IMDB = "k_v2g2yxzz";
 // "k_awj490vh"
 // "k_bdfppuax"
 // "k_lje94aw3"
@@ -12,7 +13,7 @@ const API_KEY = "eaa274ab94f09f6970f1cccdc38f24ff";
 // "k_8mkwub1j"
 // "k_zdi41bi7"
 // "k_i1qgep2h"
-// "k_v2g2yxzz"
+//
 
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3",
@@ -88,10 +89,21 @@ function getSearchFilms(value) {
   return new Promise(async (resolve, reject) => {
     try {
       const response = await fetch(
-        `https://imdb-api.com/en/API/Search/${API_KEY}/${value}`
+        `https://imdb-api.com/en/API/Search/${API_KEY_IMDB}/${value}`
       );
       const data = await response.json();
       resolve(data.results);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+function getFilmById(id) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const { data: movie } = await api(`/movie/${id}`);
+      resolve(movie);
     } catch (error) {
       reject(error);
     }
@@ -104,6 +116,7 @@ export {
   getTredingMovies,
   getTredingMoviesHorror,
   getTredingMoviesRomance,
+  getFilmById,
   // eslint-disable-next-line comma-dangle
   getSearchFilms,
 };

@@ -2,6 +2,8 @@ import { FilmCard } from "../filmCard/FilmCard";
 import { RequestExceeded } from "../requestExceeded/RequestExceeded";
 import "./row.css";
 
+const url = `https://image.tmdb.org/t/p/w300`;
+
 const Row = ({ title, style, items }) => {
   return (
     <div className="row">
@@ -16,10 +18,9 @@ const Row = ({ title, style, items }) => {
             return (
               <FilmCard
                 key={film.id}
+                id={film.id}
                 title={film.name || film.title}
-                image={{
-                  url: `https://image.tmdb.org/t/p/w300${film.poster_path}`,
-                }}
+                image={film.image || `${url}${film.poster_path}`}
               />
             );
           })

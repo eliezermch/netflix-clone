@@ -1,3 +1,9 @@
+.banner__content-modal {
+  padding-top: 50px !important;
+}
+.banner--fadeBottom-modal {
+  height: 70px !important;
+}
 .banner {
   position: relative;
   height: 224px;
@@ -17,6 +23,10 @@
   padding-bottom: 0.3rem;
 }
 
+.banner__title-modal {
+  font-size: var(--font-size-md) !important;
+}
+
 .banner__description {
   width: 14rem;
   line-height: 1.3;
@@ -25,7 +35,14 @@
   max-width: 360px;
   height: 100px;
 }
-
+.banner__description-modal {
+  width: 14rem;
+  line-height: 1.3;
+  padding-top: 1rem;
+  font-size: var(--font-size-xs) !important;
+  max-width: 360px;
+  height: 100px;
+}
 .banner__button {
   font-size: var(--font-size-sm);
   cursor: pointer;
@@ -38,6 +55,14 @@
   margin-right: 1rem;
   padding: 0.4rem 1.4rem;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.banner__buttons-modal .banner__button {
+  font-size: var(--font-size-xs) !important;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  margin-right: 1rem;
+  padding: 0.4rem 1.4rem;
 }
 
 .banner--fadeBottom {
@@ -56,7 +81,41 @@
   transition: all 0.2s;
 }
 
+.banner_exit-container {
+  width: 100%;
+  display: flex;
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+
+.banner__exit-button {
+  width: auto;
+  margin: 16px;
+  background-color: transparent;
+  border: none;
+}
+
+.banner__exit-button:hover {
+  cursor: pointer;
+}
+
+.banner__exit-button img {
+  width: 24px;
+  height: 24px;
+}
+
 @media (min-width: 768px) {
+  .banner__content-modal {
+    padding-top: 20px !important;
+  }
+  .banner__title-modal {
+    font-size: var(--font-size-lg) !important;
+  }
+  .banner__description-modal {
+    width: 37.5rem !important;
+    max-width: 400px !important;
+    font-size: var(--font-size-sm) !important;
+  }
   .banner__button {
     border-radius: 0.2vw;
     margin-right: 1rem;
@@ -70,6 +129,9 @@
 }
 
 @media (min-width: 1024px) {
+  .banner__content-modal {
+    padding-top: 100px !important;
+  }
   .banner {
     height: 448px;
   }
@@ -81,15 +143,32 @@
   .banner__title {
     font-size: var(--font-size-xl);
   }
+  .banner__title-modal {
+    font-size: var(--font-size-xl) !important;
+  }
   .banner__button {
     font-size: var(--font-size-md);
+  }
+  .banner__buttons-modal .banner__button {
+    font-size: var(--font-size-md) !important;
+    border-radius: 0.2vw !important;
+    margin-right: 1rem !important;
+    padding: 0.5rem 2rem !important;
   }
   .banner__description {
     max-width: 600px;
     height: 160px;
     font-size: var(--font-size-md);
   }
+  .banner__description-modal {
+    max-width: 600px !important;
+    height: 160px !important;
+    font-size: var(--font-size-lg) !important;
+  }
   .banner--fadeBottom {
     height: 16.2rem;
+  }
+  .banner--fadeBottom-modal {
+    height: 200px !important;
   }
 }
