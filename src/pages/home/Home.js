@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // Context
 import { useGlobalState } from "../../context/Context";
@@ -21,11 +21,8 @@ import {
 
 const Home = () => {
   const [state, dispatch] = useGlobalState();
-
-  const bannerFilm =
-    state.trendingNetflixOriginals[
-      Math.floor(Math.random() * state.trendingNetflixOriginals.length - 1)
-    ] || undefined;
+  const [trendingNetflixOriginalRandom, setTrendingNetflixOriginalRandom] =
+    useState([]);
 
   useEffect(() => {
     (async () => {
@@ -52,17 +49,22 @@ const Home = () => {
     })();
   }, []);
 
+  useEffect(() => {
+    (() => {
+      const bannerFilm =
+        state.trendingNetflixOriginals[
+          Math.floor(Math.random() * state.trendingNetflixOriginals.length)
+        ] || undefined;
+      setTrendingNetflixOriginalRandom(bannerFilm);
+    })();
+  }, [state.trendingNetflixOriginals]);
+
   return (
     <>
       <Nav />
 
-      <Banner film={bannerFilm} />
+      <Banner film={trendingNetflixOriginalRandom} />
 
-      <Row
-        style="slider"
-        items={state.trendingNetflixOriginals}
-        title="Trendings"
-      />
       <Row
         style="slider"
         items={state.trendingMovies}
@@ -71,6 +73,12 @@ const Home = () => {
       <Row style="slider" items={state.trendingActions} title="Action" />
       <Row style="slider" items={state.trendingHorrors} title="Horror" />
       <Row style="slider" items={state.trendingRomance} title="Romance" />
+
+      <Row
+        style="slider"
+        items={state.trendingNetflixOriginals}
+        title="Netflix Trendings"
+      />
 
       <Footer />
     </>

@@ -18,9 +18,17 @@
 }
 
 .banner__title {
+  width: fit-content;
   font-size: var(--font-size-lg);
   font-weight: 700;
-  padding-bottom: 0.3rem;
+  padding: 0.3rem;
+  border-radius: 10px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5) 42%,
+    rgba(0, 0, 0, 0) 130.17%
+  );
 }
 
 .banner__title-modal {

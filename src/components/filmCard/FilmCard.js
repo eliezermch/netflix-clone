@@ -15,8 +15,8 @@ function FilmCard({ id, title, image }) {
 
   return (
     <>
-      <div className="row__poster-container" onClick={handleClick}>
-        <figure className="row__poster">
+      <div className="row__poster-container">
+        <figure className="row__poster" onClick={handleClick}>
           <img src={image} alt={title} />
         </figure>
         <div className="row__content">

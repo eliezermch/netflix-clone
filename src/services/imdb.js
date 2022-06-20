@@ -110,6 +110,17 @@ function getFilmById(id) {
   });
 }
 
+function getVideoById(id) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const { data: movie } = await api(`/movie/${id}/videos`);
+      resolve(movie);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
 export {
   getTredingNetflixOriginal,
   getTredingMoviesActions,
@@ -117,6 +128,7 @@ export {
   getTredingMoviesHorror,
   getTredingMoviesRomance,
   getFilmById,
+  getVideoById,
   // eslint-disable-next-line comma-dangle
   getSearchFilms,
 };

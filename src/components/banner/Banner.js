@@ -1,8 +1,15 @@
 import { RequestExceeded } from "../requestExceeded/RequestExceeded";
+
+// import { useGlobalState } from "../../context/Context";
+
+// import { getVideoById } from "../../services/imdb";
+
 import iconX from "../../assets/images/icons/icon-x.png";
 import "./banner.css";
 
 const Banner = ({ film, filmDetails, mode, handleClick }) => {
+  // const [state, dispatch] = useGlobalState();
+
   const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   };
@@ -11,6 +18,14 @@ const Banner = ({ film, filmDetails, mode, handleClick }) => {
     filmDetails?.backdrop_path !== null
       ? filmDetails?.backdrop_path
       : filmDetails?.poster_path;
+
+  // const handleVideo = async () => {
+  //   if (!state.trendingVideosById.length) {
+  //     const data = await getVideoById(filmDetails?.id);
+  //     console.log("🚀 ~ data", data);
+  //     dispatch({ trendingVideosById: data });
+  //   }
+  // };
 
   return (
     <header

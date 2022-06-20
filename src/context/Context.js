@@ -6,6 +6,7 @@ const defaultGlobalState = {
   trendingActions: [],
   trendingHorrors: [],
   trendingRomance: [],
+  trendingVideosById: [],
   searchFilms: { value: "", result: [] },
 };
 const globalStateContext = React.createContext(defaultGlobalState);

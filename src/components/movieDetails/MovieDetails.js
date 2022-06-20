@@ -11,7 +11,6 @@ function MovieDetails({ id, handleClick }) {
   useEffect(() => {
     (async () => {
       const data = await getFilmById(id);
-      console.log("🚀 ~ data", data);
       setStateFilmsDetails(data);
     })();
   }, []);

@@ -18,6 +18,12 @@ const Details = ({ filmDetails }) => {
           <div className="details-content__description-span">
             <span>📆{filmDetails?.release_date}</span>
             <span>⌛{timeWithoutDecimals} Hs.</span>
+            <span>
+              Languages:
+              {filmDetails?.spoken_languages?.map((language) => {
+                return ` ● ${language.english_name} `;
+              })}
+            </span>
             <span>{isAdult}</span>
           </div>
           <p>{filmDetails?.overview}</p>
