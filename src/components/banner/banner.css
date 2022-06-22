@@ -26,8 +26,8 @@
 
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.5) 42%,
-    rgba(0, 0, 0, 0) 130.17%
+    rgba(0, 0, 0, 0.5) 46%,
+    rgba(0, 0, 0, 0) 106%
   );
 }
 
@@ -112,6 +112,32 @@
   height: 24px;
 }
 
+.banner__trailers {
+  width: 100%;
+}
+
+.banner_exit-container-video {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 4;
+}
+
+.banner__exit-button-video {
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.request-exceeded_banner-modal {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+}
+
 @media (min-width: 768px) {
   .banner__content-modal {
     padding-top: 20px !important;
@@ -177,6 +203,6 @@
     height: 16.2rem;
   }
   .banner--fadeBottom-modal {
-    height: 200px !important;
+    height: 195px !important;
   }
 }

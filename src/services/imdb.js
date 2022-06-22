@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API_KEY = "eaa274ab94f09f6970f1cccdc38f24ff";
-const API_KEY_IMDB = "k_v2g2yxzz";
-// "k_awj490vh"
+const API_KEY_IMDB = "k_awj490vh";
+//
 // "k_bdfppuax"
 // "k_lje94aw3"
 // "k_sb8bbr69"
@@ -13,7 +13,7 @@ const API_KEY_IMDB = "k_v2g2yxzz";
 // "k_8mkwub1j"
 // "k_zdi41bi7"
 // "k_i1qgep2h"
-//
+// "k_v2g2yxzz"
 
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3",
@@ -99,6 +99,34 @@ function getSearchFilms(value) {
   });
 }
 
+function getTrailerFilmsId(id) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch(
+        `https://imdb-api.com/en/API/YouTubeTrailer/${API_KEY_IMDB}/${id}`
+      );
+      const data = await response.json();
+      resolve(data);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+function getYoutubeTrailerFilms(id) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch(
+        `https://imdb-api.com/API/YouTube/${API_KEY_IMDB}/${id}`
+      );
+      const data = await response.json();
+      resolve(data);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
 function getFilmById(id) {
   return new Promise(async (resolve, reject) => {
     try {
@@ -129,6 +157,8 @@ export {
   getTredingMoviesRomance,
   getFilmById,
   getVideoById,
-  // eslint-disable-next-line comma-dangle
   getSearchFilms,
+  getYoutubeTrailerFilms,
+  // eslint-disable-next-line comma-dangle
+  getTrailerFilmsId,
 };

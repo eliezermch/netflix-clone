@@ -63,7 +63,7 @@ const Home = () => {
     <>
       <Nav />
 
-      <Banner film={trendingNetflixOriginalRandom} />
+      <Banner mode="default" film={trendingNetflixOriginalRandom} />
 
       <Row
         style="slider"

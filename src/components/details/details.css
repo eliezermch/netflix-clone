@@ -1,8 +1,15 @@
+.details-container {
+  height: 160px;
+}
+
 .details-content {
+  height: auto;
   display: flex;
   justify-content: space-between;
   padding: 20px 10px;
   background-color: var(--bg-color);
+  position: relative;
+  top: -6px;
 }
 
 .details-content__description {
@@ -65,6 +72,9 @@
 }
 
 @media (min-width: 1024px) {
+  .details-container {
+    height: 150px;
+  }
   .details-content {
     padding: 20px 30px;
   }

@@ -19,6 +19,7 @@ function MovieDetails({ id, handleClick }) {
     <div className="movie-details__container">
       <div className="movie-details-content">
         <Banner
+          id={stateFilmsDetails.imdb_id}
           filmDetails={stateFilmsDetails}
           mode="modal"
           handleClick={handleClick}

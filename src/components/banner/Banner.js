@@ -1,14 +1,13 @@
 import { RequestExceeded } from "../requestExceeded/RequestExceeded";
 
-// import { useGlobalState } from "../../context/Context";
-
-// import { getVideoById } from "../../services/imdb";
+import { getTrailerFilmsId, getYoutubeTrailerFilms } from "../../services/imdb";
 
 import iconX from "../../assets/images/icons/icon-x.png";
 import "./banner.css";
+import { useState } from "react";
 
-const Banner = ({ film, filmDetails, mode, handleClick }) => {
-  // const [state, dispatch] = useGlobalState();
+const Banner = ({ id, film, filmDetails, mode, handleClick }) => {
+  const [stateTrailers, setStateTrailers] = useState([]);
 
   const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
@@ -19,15 +18,13 @@ const Banner = ({ film, filmDetails, mode, handleClick }) => {
       ? filmDetails?.backdrop_path
       : filmDetails?.poster_path;
 
-  // const handleVideo = async () => {
-  //   if (!state.trendingVideosById.length) {
-  //     const data = await getVideoById(filmDetails?.id);
-  //     console.log("🚀 ~ data", data);
-  //     dispatch({ trendingVideosById: data });
-  //   }
-  // };
+  const handleTrailer = async () => {
+    const dataId = await getTrailerFilmsId(id);
+    const data = await getYoutubeTrailerFilms(dataId.videoId);
+    setStateTrailers(data);
+  };
 
-  return (
+  return stateTrailers.length !== undefined ? (
     <header
       className="banner"
       style={{
@@ -66,7 +63,15 @@ const Banner = ({ film, filmDetails, mode, handleClick }) => {
               mode === "modal" && "banner__buttons-modal"
             }`}
           >
-            <button className="banner__button">Play</button>
+            {mode === "default" ? (
+              <button className="banner__button">Play</button>
+            ) : (
+              <button className="banner__button" onClick={handleTrailer}>
+                Play
+                <a href={stateTrailers}></a>
+              </button>
+            )}
+
             <button className="banner__button">My List</button>
           </div>
           {mode !== "modal" ? (
@@ -87,6 +92,36 @@ const Banner = ({ film, filmDetails, mode, handleClick }) => {
         }`}
       ></div>
     </header>
+  ) : (
+    <>
+      {stateTrailers.videoId === null ? (
+        <div className="request-exceeded_banner-modal">
+          <RequestExceeded />
+          <div className="banner_exit-container banner_exit-container-video">
+            <button
+              className="banner__exit-button banner__exit-button-video"
+              onClick={handleClick}
+            >
+              <img src={iconX} alt="exit button" />
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <video controls className="banner__trailers">
+            <source src={stateTrailers?.videos[2]?.url} type="" />
+          </video>
+          <div className="banner_exit-container banner_exit-container-video">
+            <button
+              className="banner__exit-button banner__exit-button-video"
+              onClick={handleClick}
+            >
+              <img src={iconX} alt="exit button" />
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

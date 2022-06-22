@@ -14,7 +14,10 @@
 
 .movie-details-content {
   width: 74%;
-  height: 80%;
+  height: 100%;
+  position: absolute;
+  top: 30px;
+  overflow-y: auto;
 }
 
 @media (min-width: 1024px) {
@@ -34,6 +37,6 @@
 
   .movie-details-content {
     width: 74%;
-    height: 80%;
+    height: 86%;
   }
 }
