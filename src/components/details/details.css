@@ -1,5 +1,5 @@
 .details-container {
-  height: 160px;
+  height: 130px;
 }
 
 .details-content {
@@ -72,9 +72,6 @@
 }
 
 @media (min-width: 1024px) {
-  .details-container {
-    height: 150px;
-  }
   .details-content {
     padding: 20px 30px;
   }
