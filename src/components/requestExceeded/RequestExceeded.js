@@ -1,9 +1,13 @@
 import "./requestExceeded.css";
 
-function RequestExceeded() {
+function RequestExceeded({ mode }) {
   return (
     <div className="request-exceeded__container">
-      <h4>Sorry, Api request exceeded.</h4>
+      <h4>
+        {mode === "exceeded"
+          ? "Sorry, Api request exceeded."
+          : "Sorry, An error occurred."}
+      </h4>
     </div>
   );
 }

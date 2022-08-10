@@ -44,7 +44,7 @@ const Banner = ({ id, film, filmDetails, mode, handleClick }) => {
         </div>
       )}
       {!film && !filmDetails ? (
-        <RequestExceeded />
+        <RequestExceeded mode="exceeded" />
       ) : (
         <div
           className={`banner__content ${

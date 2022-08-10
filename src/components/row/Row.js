@@ -11,7 +11,7 @@ const Row = ({ title, style, items }) => {
 
       <div className={`row__posters ${style}`}>
         {items === null ? (
-          <RequestExceeded />
+          <RequestExceeded mode="error" />
         ) : (
           items &&
           items.map((film) => {
